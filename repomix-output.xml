@@ -1,0 +1,166 @@
+This file is a merged representation of the entire codebase, combined into a single document by Repomix.
+
+<file_summary>
+This section contains a summary of this file.
+
+<purpose>
+This file contains a packed representation of the entire repository's contents.
+It is designed to be easily consumable by AI systems for analysis, code review,
+or other automated processes.
+</purpose>
+
+<file_format>
+The content is organized as follows:
+1. This summary section
+2. Repository information
+3. Directory structure
+4. Repository files (if enabled)
+5. Multiple file entries, each consisting of:
+  - File path as an attribute
+  - Full contents of the file
+</file_format>
+
+<usage_guidelines>
+- This file should be treated as read-only. Any changes should be made to the
+  original repository files, not this packed version.
+- When processing this file, use the file path to distinguish
+  between different files in the repository.
+- Be aware that this file may contain sensitive information. Handle it with
+  the same level of security as you would the original repository.
+</usage_guidelines>
+
+<notes>
+- Some files may have been excluded based on .gitignore rules and Repomix's configuration
+- Binary files are not included in this packed representation. Please refer to the Repository Structure section for a complete list of file paths, including binary files
+- Files matching patterns in .gitignore are excluded
+- Files matching default ignore patterns are excluded
+- Files are sorted by Git change count (files with more changes are at the bottom)
+</notes>
+
+</file_summary>
+
+<directory_structure>
+process-management/
+  process-management.ps1
+  README.md
+README.md
+</directory_structure>
+
+<files>
+This section contains the contents of the repository's files.
+
+<file path="process-management/process-management.ps1">
+# Process Management Assignment
+# Script to list processes based on specific conditions
+
+Write-Host "=== Process Management Assignment ===" -ForegroundColor Green
+Write-Host ""
+
+# Q1: Process Name starts with 's' and ends with 't'
+Write-Host "Q1. Processes with names starting with 's' and ending with 't':" -ForegroundColor Yellow
+Write-Host "================================================================" -ForegroundColor Yellow
+
+$q1_processes = Get-Process | Where-Object { $_.ProcessName -like "s*t" }
+
+if ($q1_processes) {
+    $q1_processes | Select-Object ProcessName, Id, WorkingSet, Path | Format-Table -AutoSize
+} else {
+    Write-Host "No processes found matching this criteria." -ForegroundColor Red
+}
+
+Write-Host ""
+
+# Q2: Process with WorkingSet higher than 100000 and lesser than 9999999
+Write-Host "Q2. Processes with WorkingSet between 100,000 and 9,999,999 bytes:" -ForegroundColor Yellow
+Write-Host "====================================================================" -ForegroundColor Yellow
+
+$q2_processes = Get-Process | Where-Object { 
+    $_.WorkingSet -gt 100000 -and $_.WorkingSet -lt 9999999 
+}
+
+if ($q2_processes) {
+    $q2_processes | Select-Object ProcessName, Id, @{Name='WorkingSet(MB)';Expression={[math]::Round($_.WorkingSet/1MB,2)}}, Path | 
+    Sort-Object WorkingSet -Descending | Format-Table -AutoSize
+} else {
+    Write-Host "No processes found matching this criteria." -ForegroundColor Red
+}
+
+Write-Host ""
+
+# Q3: Processes with specific criteria
+Write-Host "Q3. Processes with Id > 10, Path contains 'system', and PriorityBoostEnabled = True:" -ForegroundColor Yellow
+Write-Host "===================================================================================" -ForegroundColor Yellow
+
+$q3_processes = Get-Process | Where-Object { 
+    $_.Id -gt 10 -and 
+    $_.Path -like "*system*" -and 
+    $_.PriorityBoostEnabled -eq $true 
+}
+
+if ($q3_processes) {
+    $q3_processes | Select-Object ProcessName, Id, Path, PriorityBoostEnabled, 
+    @{Name='WorkingSet(MB)';Expression={[math]::Round($_.WorkingSet/1MB,2)}} | Format-Table -AutoSize
+} else {
+    Write-Host "No processes found matching this criteria." -ForegroundColor Red
+}
+
+Write-Host ""
+
+# Summary
+Write-Host "=== Summary ===" -ForegroundColor Green
+Write-Host "Q1 Results: $(($q1_processes | Measure-Object).Count) processes found"
+Write-Host "Q2 Results: $(($q2_processes | Measure-Object).Count) processes found"
+Write-Host "Q3 Results: $(($q3_processes | Measure-Object).Count) processes found"
+
+# Optional: Export results to files
+$export_choice = Read-Host "`nWould you like to export results to CSV files? (y/n)"
+if ($export_choice -eq 'y' -or $export_choice -eq 'Y') {
+    $timestamp = Get-Date -Format "yyyyMMdd_HHmmss"
+    
+    if ($q1_processes) {
+        $q1_processes | Export-Csv -Path "Q1_Processes_$timestamp.csv" -NoTypeInformation
+        Write-Host "Q1 results exported to Q1_Processes_$timestamp.csv" -ForegroundColor Green
+    }
+    
+    if ($q2_processes) {
+        $q2_processes | Export-Csv -Path "Q2_Processes_$timestamp.csv" -NoTypeInformation
+        Write-Host "Q2 results exported to Q2_Processes_$timestamp.csv" -ForegroundColor Green
+    }
+    
+    if ($q3_processes) {
+        $q3_processes | Export-Csv -Path "Q3_Processes_$timestamp.csv" -NoTypeInformation
+        Write-Host "Q3 results exported to Q3_Processes_$timestamp.csv" -ForegroundColor Green
+    }
+}
+</file>
+
+<file path="process-management/README.md">
+### process-management.ps1
+**Purpose**: Lists processes based on specific filtering criteria  
+**Date**: August 2025  
+**Assignment**: Process Management - Lists processes by name patterns, memory usage, and system properties
+
+**Features**:
+- Find processes with names starting with 's' and ending with 't'
+- Filter processes by WorkingSet memory range (100K - 10M bytes)
+- Find system processes with specific ID and priority settings
+- Optional CSV export functionality
+
+**Usage**:
+```powershell
+.\process-management.ps1
+</file>
+
+<file path="README.md">
+# PowerShell Scripts 💻
+
+A collection of PowerShell scripts I'm creating while learning system administration and automation.
+
+[![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=for-the-badge&logo=powershell&logoColor=white)](https://docs.microsoft.com/en-us/powershell/)
+
+## Scripts
+
+### process-management.ps1
+</file>
+
+</files>

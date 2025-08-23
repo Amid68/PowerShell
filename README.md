@@ -1,32 +1,39 @@
 # Katas Collection 🥋
 
-"The expert in anything was once a beginner who refused to give up"
+"Der Experte in allem war einst ein Anfänger, der nicht aufgegeben hat"
 
-This repository includes a curated collection of programming katas focused on real-world problem-solving and skill development across multiple languages and domains.
+Diese Repository enthält eine kuratierte Sammlung von Programmier-Katas, die sich auf reale Problemlösungen und Skill-Entwicklung in verschiedenen Bereichen der Systemadministration fokussieren.
 
 [![PowerShell](https://img.shields.io/badge/PowerShell-5391FE?style=flat-square&logo=powershell&logoColor=white)](./powershell/)
-![Katas](https://img.shields.io/badge/Katas-12+-blue?style=flat-square)
+![Katas](https://img.shields.io/badge/Katas-15+-blue?style=flat-square)
 [![License](https://img.shields.io/badge/License-MIT-yellow?style=flat-square)](./LICENSE)
 
-> **Kata** (型): A structured practice exercise designed to perfect techniques through repetition and refinement.
+> **Kata** (型): Eine strukturierte Praxis-Übung, die darauf ausgelegt ist, Techniken durch Wiederholung und Verfeinerung zu perfektionieren.
 
-## 🎯 **Philosophy**
+## 🎯 **Philosophie**
 
-This repository contains programming katas that emphasize:
+Diese Repository enthält Programmier-Katas, die folgendes betonen:
 
-- **Real-world scenarios** over abstract algorithms
-- **System administration** and **DevOps** challenges  
-- **Clean, well-documented solutions** with comprehensive tests
+- **Realitätsnahe Szenarien** statt abstrakte Algorithmen
+- **Systemadministration** und **DevOps** Herausforderungen  
+- **Saubere, gut dokumentierte Lösungen** mit umfassenden Tests
 
-## 📚 **Languages & Technologies**
+## 🔄 **Kata-Typen**
+
+Die Katas sind in verschiedenen Formaten verfügbar:
+
+- **📋 Funktionen schreiben** - Klassische Katas zum Entwickeln von PowerShell-Funktionen
+- **⚡ Skripte erstellen** - Aufgaben zum Schreiben vollständiger Automatisierungs-Skripte  
+- **🛠️ Praktische Übungen** - Hands-on Systemadministrations-Aufgaben mit Schritt-für-Schritt Lösungen
+
+## 📚 **Sprachen & Technologien**
 
 ### 🔵 PowerShell
-**System Administration & Automation Katas**
+**Systemadministration & Automatisierungs-Katas**
 
-| Kata | Difficulty | Focus Area | Status |
-|------|-----------|------------|---------|
-| [User Account Management](./powershell/fundamentals/user-account-management/) | 7 kyu | Object filtering, pipelines | ✅ Complete |
-| [Windows Service Health](./powershell/fundamentals/windows-service-health/) | 7 kyu | Complex logic, monitoring | ✅ Complete |
+Die PowerShell-Katas sind in thematische Bereiche unterteilt:
 
-**Skills Covered**: Pipeline operations, object processing, filtering, sorting, parameter validation, error handling
+- **[Grundlagen](./powershell/)** - Basis-Skills für Dateioperationen, Benutzerkonten, Services
+- **[Active Directory](./powershell/active-directory/)** - AD-Management, Benutzer- und Computer-Verwaltung
 
+**Abgedeckte Skills**: Pipeline-Operationen, Objektverarbeitung, Filterung, Sortierung, Parameter-Validierung, Fehlerbehandlung, Dateisystem-Operationen, Active Directory Verwaltung
